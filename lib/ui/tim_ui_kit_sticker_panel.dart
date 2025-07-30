@@ -550,9 +550,9 @@ class _CustomEmojiItemState extends State<CustomEmojiItem> {
         width: size,
       );
     }else{
-      img = PowerImageWidget.asset(
+      img = Image.asset(
         url,
-        drawable: false,
+        // drawable: false,
         height: size,
         width: size,
         package: widget.isDeafultEmoji?'tim_ui_kit_sticker_plugin':null,
