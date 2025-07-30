@@ -1,6 +1,6 @@
 import 'dart:ui';
+
 import 'package:common_power_image/library.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:tencent_chat_i18n_tool/tencent_chat_i18n_tool.dart';
 import 'package:tim_ui_kit_sticker_plugin/utils/tim_ui_kit_sticker_data.dart';
@@ -26,25 +26,26 @@ class StickerPanel extends StatefulWidget {
   final double? width;
   final bool isWideScreen;
 
-  const StickerPanel({Key? key,
-    this.sendTextMsg,
-    required this.sendFaceMsg,
-    required this.deleteText,
-    required this.addText,
-    this.addCustomEmojiText,
-    this.bottomColor,
-    required this.customStickerPackageList,
-    this.emptyPlaceHolder,
-    this.onLongTap,
-    this.backgroundColor = const Color(0xFFEDEDED),
-    this.lightPrimaryColor = const Color(0xFF3371CD),
-    this.showBottomContainer = true,
-    this.showDeleteButton = true,
-    this.crossAxisCount = 8,
-    this.height,
-    this.width,
-    this.isWideScreen = false,
-    this.panelPadding})
+  const StickerPanel(
+      {Key? key,
+      this.sendTextMsg,
+      required this.sendFaceMsg,
+      required this.deleteText,
+      required this.addText,
+      this.addCustomEmojiText,
+      this.bottomColor,
+      required this.customStickerPackageList,
+      this.emptyPlaceHolder,
+      this.onLongTap,
+      this.backgroundColor = const Color(0xFFEDEDED),
+      this.lightPrimaryColor = const Color(0xFF3371CD),
+      this.showBottomContainer = true,
+      this.showDeleteButton = true,
+      this.crossAxisCount = 8,
+      this.height,
+      this.width,
+      this.isWideScreen = false,
+      this.panelPadding})
       : super(key: key);
 
   @override
@@ -116,36 +117,36 @@ class _EmojiPanelState extends State<StickerPanel> {
               children: [
                 Expanded(
                     child: Center(
-                      child: Material(
-                        color: Colors.transparent,
-                        child: customEmojiFace.isCustomSticker
-                            ? (customEmojiFace.isCustomEmojiSticker
+                  child: Material(
+                    color: Colors.transparent,
+                    child: customEmojiFace.isCustomSticker
+                        ? (customEmojiFace.isCustomEmojiSticker
                             ? (customEmojiFace.isDefaultEmojiSticker
-                            ? CustomEmojiItem(
-                            size: 22,
-                            sticker: customEmojiFace.menuItem,
-                            isCustomEmoji: true,
-                            isDeafultEmoji: true,
-                            baseUrl: customEmojiFace.baseUrl)
+                                ? CustomEmojiItem(
+                                    size: 22,
+                                    sticker: customEmojiFace.menuItem,
+                                    isCustomEmoji: true,
+                                    isDeafultEmoji: true,
+                                    baseUrl: customEmojiFace.baseUrl)
+                                : CustomEmojiItem(
+                                    size: 22,
+                                    sticker: customEmojiFace.menuItem,
+                                    isCustomEmoji: true,
+                                    baseUrl: customEmojiFace.baseUrl))
                             : CustomEmojiItem(
-                            size: 22,
-                            sticker: customEmojiFace.menuItem,
-                            isCustomEmoji: true,
-                            baseUrl: customEmojiFace.baseUrl))
-                            : CustomEmojiItem(
-                            size: 22,
-                            sticker: customEmojiFace.menuItem,
-                            baseUrl: customEmojiFace.baseUrl))
-                            : Container(
-                          padding: const EdgeInsets.only(bottom: 2),
-                          child: EmojiItem(
-                            size: 19,
-                            name: customEmojiFace.menuItem.name,
-                            unicode: customEmojiFace.menuItem.unicode!,
+                                size: 22,
+                                sticker: customEmojiFace.menuItem,
+                                baseUrl: customEmojiFace.baseUrl))
+                        : Container(
+                            padding: const EdgeInsets.only(bottom: 2),
+                            child: EmojiItem(
+                              size: 19,
+                              name: customEmojiFace.menuItem.name,
+                              unicode: customEmojiFace.menuItem.unicode!,
+                            ),
                           ),
-                        ),
-                      ),
-                    ))
+                  ),
+                ))
               ],
             )),
       ));
@@ -153,7 +154,8 @@ class _EmojiPanelState extends State<StickerPanel> {
     return list;
   }
 
-  Widget _buildEmojiPanel(List<int> textEmojiIndexList,
+  Widget _buildEmojiPanel(
+      List<int> textEmojiIndexList,
       List<int> customEmojiStickerIndexList,
       List<CustomStickerPackage> customStickerList) {
     if (customStickerList.isEmpty) return Container();
@@ -175,7 +177,7 @@ class _EmojiPanelState extends State<StickerPanel> {
             ),
             children: [
               ...customStickerList[selectedIdx].stickerList.map(
-                    (item) {
+                (item) {
                   LayerLink layerLink = LayerLink();
                   return GestureDetector(
                       behavior: HitTestBehavior.translucent,
@@ -207,16 +209,17 @@ class _EmojiPanelState extends State<StickerPanel> {
                     widget.deleteText();
                   },
                   child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
-                                color: const Color(0x66bebebe),
+                                color: Color(0x66bebebe),
                                 offset: Offset(0.0, 0.0),
                                 blurRadius: 10,
                                 spreadRadius: 2),
                           ],
-                          borderRadius: const BorderRadius.all(Radius.circular(4))),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(4))),
                       margin: const EdgeInsets.only(right: 10),
                       width: 44,
                       height: 35,
@@ -242,7 +245,7 @@ class _EmojiPanelState extends State<StickerPanel> {
               childAspectRatio: 1,
             ),
             children: customStickerList[selectedIdx].stickerList.map(
-                  (item) {
+              (item) {
                 LayerLink layerLink = LayerLink();
                 return GestureDetector(
                     behavior: HitTestBehavior.translucent,
@@ -280,16 +283,17 @@ class _EmojiPanelState extends State<StickerPanel> {
                     widget.deleteText();
                   },
                   child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           boxShadow: [
                             BoxShadow(
-                                color: const Color(0x66bebebe),
+                                color: Color(0x66bebebe),
                                 offset: Offset(0.0, 0.0),
                                 blurRadius: 10,
                                 spreadRadius: 2),
                           ],
-                          borderRadius: const BorderRadius.all(Radius.circular(4))),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(4))),
                       margin: const EdgeInsets.only(right: 10),
                       width: 44,
                       height: 35,
@@ -312,19 +316,15 @@ class _EmojiPanelState extends State<StickerPanel> {
         childAspectRatio: 1,
       ),
       children: customStickerList[selectedIdx].stickerList.map(
-            (item) {
+        (item) {
           LayerLink layerLink = LayerLink();
           return GestureDetector(
               behavior: HitTestBehavior.translucent,
               onTap: () {
                 final path = customStickerList[selectedIdx].baseUrl == null
                     ? item.url!
-                    : customStickerList[selectedIdx].baseUrl! +
-                    '/' +
-                    item.name;
-                widget.sendFaceMsg(
-                    item.index,
-                    path);
+                    : customStickerList[selectedIdx].baseUrl! + '/' + item.name;
+                widget.sendFaceMsg(item.index, path);
               },
               onLongPressStart: (LongPressStartDetails details) {
                 if (widget.onLongTap != null) {
@@ -344,7 +344,8 @@ class _EmojiPanelState extends State<StickerPanel> {
     );
   }
 
-  Widget _buildBottomPanel(List<int> textEmojiIndexList,
+  Widget _buildBottomPanel(
+      List<int> textEmojiIndexList,
       List<int> customEmojiStickerIndexList,
       List<CustomStickerPackage> customStickerList) {
     return SizedBox(
@@ -356,10 +357,10 @@ class _EmojiPanelState extends State<StickerPanel> {
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child:
-                    Row(children: _buildEmojiListWidget(customStickerList)),
+                        Row(children: _buildEmojiListWidget(customStickerList)),
                   ))),
           if ((textEmojiIndexList.contains(selectedIdx) ||
-              customEmojiStickerIndexList.contains(selectedIdx)) &&
+                  customEmojiStickerIndexList.contains(selectedIdx)) &&
               widget.sendTextMsg != null)
             ElevatedButton(
                 child: Text(TIM_t("发送")),
@@ -381,7 +382,7 @@ class _EmojiPanelState extends State<StickerPanel> {
           Container(
             // TODO
             height:
-            (widget.height ?? 248) - (widget.showBottomContainer ? 48 : 0),
+                (widget.height ?? 248) - (widget.showBottomContainer ? 48 : 0),
             color: widget.backgroundColor,
             padding: widget.panelPadding ??
                 (widget.isWideScreen
@@ -407,13 +408,13 @@ class _EmojiPanelState extends State<StickerPanel> {
           // )),
           widget.showBottomContainer
               ? Container(
-              padding: EdgeInsets.fromLTRB(
-                  widget.isWideScreen ? 0 : 16, 0, 16, 0),
-              color: widget.bottomColor,
-              child: _buildBottomPanel(
-                  textEmojiIndexList,
-                  customEmojiStickerIndexList,
-                  widget.customStickerPackageList))
+                  padding: EdgeInsets.fromLTRB(
+                      widget.isWideScreen ? 0 : 16, 0, 16, 0),
+                  color: widget.bottomColor,
+                  child: _buildBottomPanel(
+                      textEmojiIndexList,
+                      customEmojiStickerIndexList,
+                      widget.customStickerPackageList))
               : Container(),
         ],
       ),
@@ -444,13 +445,14 @@ class EmojiItem extends StatelessWidget {
 }
 
 class CustomEmojiItem extends StatefulWidget {
-  const CustomEmojiItem({Key? key,
-    required this.sticker,
-    this.baseUrl,
-    this.size,
-    this.isBigImage = false,
-    this.isCustomEmoji = false,
-    this.isDeafultEmoji = false})
+  const CustomEmojiItem(
+      {Key? key,
+      required this.sticker,
+      this.baseUrl,
+      this.size,
+      this.isBigImage = false,
+      this.isCustomEmoji = false,
+      this.isDeafultEmoji = false})
       : super(key: key);
 
   final CustomSticker sticker;
@@ -465,8 +467,8 @@ class CustomEmojiItem extends StatefulWidget {
 }
 
 class _CustomEmojiItemState extends State<CustomEmojiItem> {
-// gif图片首帧
-  ImageInfo? _imageInfo;
+// // gif图片首帧
+//   ImageInfo? _imageInfo;
 
   @override
   initState() {
@@ -493,95 +495,69 @@ class _CustomEmojiItemState extends State<CustomEmojiItem> {
 
   double get size => widget.isBigImage! ? 60 : 30;
 
-  void _buildFristFrameFromNetworkImg(String url) async {
-    final cache = await DefaultCacheManager().getSingleFile(url);
-    final data = await cache.readAsBytes();
-    _getFirstFrame(data);
-  }
+  // void _buildFristFrameFromNetworkImg(String url) async {
+  //   final cache = await DefaultCacheManager().getSingleFile(url);
+  //   final data = await cache.readAsBytes();
+  //   _getFirstFrame(data);
+  // }
 
-  void _buildFristFrameFromLocalImg(ImageProvider image) async {
-    dynamic data;
-    if (image is AssetImage) {
-      AssetBundleImageKey key =
-      await image.obtainKey(const ImageConfiguration());
-      data = await key.bundle.load(key.name);
-    } else if (image is FileImage) {
-      data = await image.file.readAsBytes();
-    } else if (image is MemoryImage) {
-      data = image.bytes;
-    }
-    _getFirstFrame(data);
-  }
+  // void _buildFristFrameFromLocalImg(ImageProvider image) async {
+  //   dynamic data;
+  //   if (image is AssetImage) {
+  //     final key =
+  //         await image.obtainKey(const ImageConfiguration());
+  //     data = await key.bundle.load(key.name);
+  //   } else if (image is FileImage) {
+  //     data = await image.file.readAsBytes();
+  //   } else if (image is MemoryImage) {
+  //     data = image.bytes;
+  //   }
+  //   _getFirstFrame(data);
+  // }
 
-  void _getFirstFrame(dynamic data) async {
-    var codec = await PaintingBinding.instance
-        .instantiateImageCodecWithSize(data.buffer.asUint8List());
-    FrameInfo? frameInfo = await codec?.getNextFrame();
-    if (frameInfo != null && mounted) {
-      setState(() {
-        _imageInfo = ImageInfo(image: frameInfo.image);
-      });
-    }
-  }
+  // void _getFirstFrame(dynamic data) async {
+  //   var codec = await PaintingBinding.instance
+  //       .instantiateImageCodecWithSize(data.buffer.asUint8List());
+  //   FrameInfo? frameInfo = await codec?.getNextFrame();
+  //   if (frameInfo != null && mounted) {
+  //     setState(() {
+  //       _imageInfo = ImageInfo(image: frameInfo.image);
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     String url = getUrl();
     bool isImgFromNetwork = isFromNetwork();
-    bool isImgAnimated = isAnimated();
+    // bool isImgAnimated = isAnimated();
     Widget? img;
-    if (isImgAnimated && isImgFromNetwork) {
-      _buildFristFrameFromNetworkImg(url);
-    }
-    if (isImgAnimated && !isImgFromNetwork) {
-      _buildFristFrameFromLocalImg(Image
-          .asset(
-        url,
-        height: size,
-        width: size,
-      )
-          .image);
-    }
-    if (!isImgAnimated && isImgFromNetwork) {
-
+    // if (isImgAnimated && isImgFromNetwork) {
+    //   _buildFristFrameFromNetworkImg(url);
+    // }
+    // if (isImgAnimated && !isImgFromNetwork) {
+    //   _buildFristFrameFromLocalImg(Image.asset(
+    //     url,
+    //     height: size,
+    //     width: size,
+    //   ).image);
+    // }
+    if(isImgFromNetwork){
       img = PowerImageWidget.network(
-         url,
-        height: size,
-        width: size,
-      );
-    }
-    if (!isImgAnimated && !isImgFromNetwork && widget.isCustomEmoji) {
-      if (widget.isDeafultEmoji) {
-        img = Image.asset(
-          url,
-          height: size,
-          width: size,
-          package: 'tim_ui_kit_sticker_plugin',
-        );
-      } else {
-        img = Image.asset(
-          url,
-          height: size,
-          width: size,
-        );
-      }
-    }
-    if (!isImgAnimated && !isImgFromNetwork && !widget.isCustomEmoji) {
-      img = Image.asset(
         url,
+        drawable: false,
         height: size,
         width: size,
       );
+    }else{
+      img = PowerImageWidget.asset(
+        url,
+        drawable: false,
+        height: size,
+        width: size,
+        package: widget.isDeafultEmoji?'tim_ui_kit_sticker_plugin':null,
+      );
     }
-    return SizedBox(
-        width: widget.size,
-        height: widget.size,
-        child: isImgAnimated
-            ? RawImage(
-          image: _imageInfo?.image,
-          width: size,
-          height: size,
-        )
-            : img);
+    return img;
   }
 }
